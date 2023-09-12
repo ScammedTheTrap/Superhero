@@ -1,15 +1,16 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+
 public class Database {
-    public static void main(String[] args) {
-        ArrayList<Superhero> superheroes = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
+    ArrayList<Superhero> superHeroes = new ArrayList<>();
 
 
-        // Allow the user to create up to 5 superheroes
-        for (int i = 0; i < 5; i++) {
-            System.out.println("\nSkaber Superhelt #" + (i + 1));
+    public void addSuperhero(String name, String RealName, int age, boolean isHuman, double Powerlevel) {
 
-        }
+        superHeroes.add(new Superhero(name, RealName, age, isHuman, Powerlevel));
     }
+
+    public ArrayList<Superhero>getSuperHeroes() {
+        return superHeroes;
+    }
+
 }
