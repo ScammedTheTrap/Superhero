@@ -54,22 +54,13 @@ public class Superhero {
 
     @Override
     public String toString() {
-        //SKAL RETTES
-        return "Superhero{" +
-                "name='" + name + '\'' +
-                ", RealName='" + RealName + '\'' +
-                ", age=" + age +
-                ", isHuman=" + isHuman +
-                ", Powerlevel=" + Powerlevel +
-                '}';
-    }
-    /*public String toString() {
         String string = "";
-        string += "Superhelte navn: " + superName + '\n';
-        string += "Civil navn: " + civilName + '\n';
-        string += "Powerlevel: " + powerLevel + '\n';
-        string += "Oprindelsesår: " + creationYear + '\n';
-        return string;
-    }*/
+                string += "Superheltens navn -> " + name + '\n';
+                string += "RealName -> " + RealName + '\n';
+                string += "age -> " + age + '\n';
+                string += "Er superhelten et menneske? -> " + (isHuman ? "Ja" : "Nej") + '\n';
+                string += "Superheltens styrke niveau -> " + Powerlevel + '\n' + '\n';
+                return string;
+    }
 
 }

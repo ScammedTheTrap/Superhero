@@ -1,21 +1,20 @@
 import java.util.Scanner;
 /*
-NOTAT:
-- DER SKAL VÆRE MULIGHED HVOR HVER INDTASTNING AF SUPERHELT, NÅR DEN LOOPER VIDERE TIL EN NY, SKAL BRUGEREN
-HAVE MULIGHED FOR AT AFSLUTTE PROGRAMMET
+Notat:
 
-- lave en get metode som kan returnerer arraylisten
-
-- DER SKAL EVENTUELT ÆNDRES VED ISHUMAN SÅ DET IKKE ER EN BOOLEAN DA BRUGEREN IKKE VIL HAVE TRUE/FALSE STATEMENTS
+- fiks boolean, den skal kunne registrerer både upper samt lowercases
+- eventuelt finde ud af hvordan hele programmet kan stoppe så brugeren ikke klikker 2
+og dernæst der popper en søgningskriterium frem.
 */
-
-
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Database data = new Database();
+        Database db = new Database();
 
         System.out.println("----------Velkommen til den ultimative Superhelt program 7000!!!!!----------");
+
+        int NumberOfSuperheroes = 0;
+
 
         System.out.println(" ");
 
@@ -29,7 +28,7 @@ public class Main {
 
         int svar = scan.nextInt();
 
-        while (svar == 1) {
+        while (svar == 1 && NumberOfSuperheroes < 3) {
 
             System.out.println("programmet fortsætter");
 
@@ -58,21 +57,38 @@ public class Main {
 
                 System.out.println("Superhelten er ikke et menneske :O");
             }
-            System.out.println("Indtast superheltens styrke niveau:");
+            System.out.println(" ");
 
+            System.out.println("Indtast superheltens styrke niveau:");
             double Powerlevel = scan.nextDouble();
 
             System.out.println(" ");
-            data.addSuperhero(name, Realname, age, isHuman == 'y' || isHuman == 'n', Powerlevel);
-            System.out.println(data.getSuperHeroes());
-
             Superhero superhero = new Superhero(name, Realname, age, isHuman == 'y' || isHuman == 'n', Powerlevel);
-            System.out.println(data);
-        } if (svar == 2) {
-            System.out.println("Programmet stopper.");
+            db.addSuperhero(superhero);
+            System.out.println(superhero);
 
+            NumberOfSuperheroes++;
+
+            if (NumberOfSuperheroes >= 3) {
+                System.out.println("Du har oprettet 3 superhelte. Du kan ikke oprette flere.");
+                System.out.println(db.getSuperHeroes());
+                break;
+            }
 
         }
 
+        //DENNE HER DEL ER MIN SØGNINGSKRITERIUM SOM FINDER EN SUPERHELT UD FRA BRUGERENS SØGNING
+        System.out.println("----------------Indtast superheltens navn du vil finde----------------");
+        String søgning = scan.next();
+
+        Superhero result = db.searchSuperhero(søgning); //metoden fra Database implementeret.
+
+        //if samt else for at færdiggøre søgningen hvis en oprettet superhelt findes eller ej
+        if (result == null) {
+            System.out.println("Søgemaskinen kunne ikke finde den søgte superhelt ;(: " + søgning);
+        } else {
+            System.out.println("YAAAAAAAY din superhelt blev fundet :D:");
+            System.out.println(result);
+        }
     }
 }

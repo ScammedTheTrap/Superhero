@@ -4,13 +4,23 @@ public class Database {
     ArrayList<Superhero> superHeroes = new ArrayList<>();
 
 
-    public void addSuperhero(String name, String RealName, int age, boolean isHuman, double Powerlevel) {
+    public void addSuperhero(Superhero superhero) {
+        superHeroes.add(superhero);
+    }
 
-        superHeroes.add(new Superhero(name, RealName, age, isHuman, Powerlevel));
+    public Superhero searchSuperhero(String søgning) {
+        for (Superhero superhero : superHeroes) {
+
+            if (superhero.getName().equalsIgnoreCase(søgning)) {
+                return superhero;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Superhero>getSuperHeroes() {
         return superHeroes;
     }
+
 
 }
