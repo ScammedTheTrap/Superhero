@@ -38,7 +38,7 @@ public class Superhero {
 
     }
 
-    public boolean isHuman() {
+    public boolean getIsHuman() { //Hvis der er fejl så ret den til IsHuman
         return isHuman;
 
 
@@ -52,15 +52,38 @@ public class Superhero {
         return Powerlevel;
     }
 
+    //______________________________SETTERS______________________________________-
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRealName(String realName) {
+        RealName = realName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setIsHuman(boolean human) {
+        isHuman = human;
+    }
+
+    public void setPowerlevel(double powerlevel) {
+        Powerlevel = powerlevel;
+    }
+
     @Override
     public String toString() {
         String string = "";
-                string += "Superheltens navn -> " + name + '\n';
-                string += "RealName -> " + RealName + '\n';
-                string += "age -> " + age + '\n';
-                string += "Er superhelten et menneske? -> " + (isHuman ? "Ja" : "Nej") + '\n';
-                string += "Superheltens styrke niveau -> " + Powerlevel + '\n' + '\n';
-                return string;
+        string += "Superheltens navn -> " + name + '\n';
+        string += "RealName -> " + RealName + '\n';
+        string += "age -> " + age + '\n';
+        string += "Er superhelten et menneske? -> " + (isHuman ? "Ja" : "Nej") + '\n';
+        string += "Superheltens styrke niveau -> " + Powerlevel + '\n' + '\n';
+        return string;
     }
 
 }
